@@ -1,8 +1,11 @@
 import { Col, Row } from "react-bootstrap"
 import { useSelector } from "react-redux"
+import { ReduxStore } from "../types/ReduxStore"
+import  IWeather  from "../types/Weather"
 
-const CurrentWeather = ({currentWeather}) => {
-    const search = useSelector((state) => state.weatherApi.search)
+
+const CurrentWeather = ({currentWeather}: { currentWeather : IWeather}) => {
+    const search = useSelector((state : ReduxStore) => state.weatherApi.search)
     return (
         <Col xs={12} className="my-3 slide-in-left">
             <h1 className="p-2 text-capitalize">

@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react"
 import { Col } from "react-bootstrap"
+import IWeather from "../types/Weather"
 
-const DayForecast = ({day}) => {
+const DayForecast = ({day} : {day : IWeather}) => {
     const [date, setDate] = useState(null)
 
     useEffect(() => {
         const daysDate = new Date(1000 * day.dt)
-        setDate(daysDate)
+        // setDate(daysDate)
     }, [])
 
     return (

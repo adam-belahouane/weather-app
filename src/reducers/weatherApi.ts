@@ -1,7 +1,8 @@
+import { AnyAction } from "redux";
 import { GET_WEATHER, GET_WEATHER_ERROR, TOGGLE_LOADER, SET_SEARCH } from "../actions";
 import { initialState } from "../store";
 
-const weatherApiReducer = (state = initialState.weatherApi, action) => {
+const weatherApiReducer = (state = initialState.weatherApi, action: AnyAction) => {
     switch (action.type) {
         case GET_WEATHER:
           return {

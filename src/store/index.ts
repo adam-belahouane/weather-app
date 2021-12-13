@@ -4,10 +4,12 @@ import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 import { encryptTransform } from 'redux-persist-transform-encrypt'
 import weatherApiReducer from '../reducers/weatherApi'
+import { ReduxStore } from '../types/ReduxStore'
+import IWeather from '../types/Weather'
 
-const aComposeThatAlwaysWorks = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+const aComposeThatAlwaysWorks = (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
-export const initialState = {
+export const initialState: ReduxStore = {
  
   weatherApi: {
       content: [],
@@ -23,7 +25,7 @@ const persistConfig = {
   storage,
   transforms: [
     encryptTransform({
-      secretKey: process.env.REACT_APP_ENCRYPT_KEY,
+      secretKey: (process.env.REACT_APP_ENCRYPT_KEY as string),
     }),
   ],
 }
