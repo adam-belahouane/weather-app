@@ -9,7 +9,10 @@ import "../styles/currentWeather.css"
 const CurrentWeather = () => {
     const search = useSelector((state : ReduxStore) => state.weatherApi.search)
     const currentWeather = useSelector((state: RootStateOrAny) => state.weatherApi.content);
-
+if(currentWeather.length === 0){
+    return <></>
+    
+   }else{
     return (
         <Col xs={12} className="my-3 slide-in-left">
             <h1 className="p-2 text-capitalize white-text">
@@ -65,6 +68,7 @@ const CurrentWeather = () => {
             </Row >
         </Col >
     )
+    }
 }
 
 export default CurrentWeather

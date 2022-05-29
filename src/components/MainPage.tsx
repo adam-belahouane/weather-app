@@ -12,11 +12,15 @@ const MainPage = () => {
   const dispatch = useDispatch();
   const [locationValue, setLocationValue] = useState('')
 
+  
   useEffect(() => {
     dispatch(getWeatherAction(locationValue));
     console.log(weather);
-
+    
   }, [weather.search]);
+  useEffect(() => {
+    dispatch(getWeatherAction(weather.search))
+  }, [])
   return (
     <Container>
       <Row>
