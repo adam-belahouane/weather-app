@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { RootStateOrAny, useSelector } from "react-redux";
 
-const WeeklyForecast = ({ data }) => {
+const WeeklyForecast = () => {
   const [weekly, setWeekly] = useState(null);
+
+  const data = useSelector((state: RootStateOrAny) => state.weatherApi.content);
 
   const apiKey = process.env.REACT_APP_API_KEY
   const lat = data.coord.lat

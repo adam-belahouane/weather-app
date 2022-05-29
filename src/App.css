@@ -1,10 +1,38 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+body {
+  background-color: #101039 !important;
+  color: white;
+}
+
+.search-bar-container {
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 17px;
+  top: 29px;
+  color: rgb(255, 255, 255);
+}
+
+.search-bar {
+  border-radius: 500px;
+  height: 80px;
+  text-overflow: ellipsis;
+  width: 100%;
+  padding: 6px 48px;
+  color: white;
+  border: none;
+  background-color: #1a1c49;
 }
 
 @media (prefers-reduced-motion: no-preference) {
