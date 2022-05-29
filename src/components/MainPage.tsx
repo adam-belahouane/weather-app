@@ -42,7 +42,7 @@ const MainPage = () => {
         </Col>
       </Row>
       {/* <DayForecast day={weather.content}/> */}
-      <CurrentWeather currentWeather={weather.content} />
+      <CurrentWeather/>
       {/* <WeeklyForecast/> */}
     </Container>
   );
