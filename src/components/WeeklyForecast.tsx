@@ -35,15 +35,15 @@ const WeeklyForecast = () => {
       
   }, [data])
   return (
-    <Col className="my-class" lg={6} >
-      <Row className="weekly-weather-container">
+    <>
+      {/* <div className="weekly-weather-container row"> */}
       
         {weekly.length > 0 ?
-        weekly.slice(1, 5).map((day, index) => <DayForecast day={day} key={index} /> ):
+        weekly.map((day, index) => <DayForecast day={day} key={index} /> ):
         <></>}
       
-      </Row>
-    </Col>
+      {/* </div> */}
+      </>
   );
 };
 

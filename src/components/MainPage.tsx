@@ -32,10 +32,7 @@ const MainPage = () => {
   
   useEffect(() => {
     dispatch(getWeatherAction(locationValue));
-    console.log(weather);
-
     getTodaysWeather()
-    console.log(todaysWeather);
   }, [weather.search]);
   useEffect(() => {
     dispatch(getWeatherAction(weather.search))
@@ -43,7 +40,7 @@ const MainPage = () => {
 
   }, [])
   return (
-    <Container>
+    <Container className="slide-in-left">
       <Row>
         <Col xs={12}>
           <div className="mt-3 search-bar-container" >

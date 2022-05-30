@@ -45,14 +45,14 @@ const CurrentWeather = ({ WeatherList }: Props) => {
 
     } else {
         return (
-            <Container>
+            <>
             <Row xs={12} className="my-3 slide-in-left">
                 <h1 className="p-2 text-capitalize">
                     {search}
                 </h1>
                 </Row >
 
-                <Row className="light-bg mx-0 p-3 current-weather-container ">
+                <Row className="light-bg mx-0 p-3 current-weather-container slide-in-left ">
                     <Col lg={6}>
                         <div >
                             <div className=" text-capitalize d-flex flex-row justify-content-between align-items-center">
@@ -100,11 +100,11 @@ const CurrentWeather = ({ WeatherList }: Props) => {
                     </Col >
                     
                 </Row >
-                <Row >
-                    <Col xs={12} lg={6} >
-                        <div  className="temp-graph-container mb-3">
-                        <ResponsiveContainer width="100%" height={400}>
-                            <LineChart data={lineChartList} margin={{ top: 5, right: 30, left: 20, bottom: 5 }} >
+                <Row className="slide-in-left" >
+                    <Col className="mb-3" xs={12} lg={6} >
+                        <div  className="temp-graph-container">
+                        <ResponsiveContainer width="95%" height={400}>
+                            <LineChart data={lineChartList} >
                                 <XAxis dataKey="name" />
                                 <YAxis hide />
                                 <Tooltip />
@@ -114,9 +114,13 @@ const CurrentWeather = ({ WeatherList }: Props) => {
                         </ResponsiveContainer>
                         </div>
                     </Col>
+                    <Col lg={6} className="d-flex align-items-center justify-content-center" >
+                        <div className="weekly-weather-container row">
                     <WeeklyForecast/>
+                    </div>
+                    </Col>
                     </Row>
-            </Container>
+                    </>
         )
 
     }

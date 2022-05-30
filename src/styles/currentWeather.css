@@ -6,8 +6,12 @@
 
 .temp-graph-container {
   background-color: rgba(102, 222, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   border-radius: 20px;
+  width: 100%;
 }
 
 .today-text {
