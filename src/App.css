@@ -10,6 +10,7 @@
 
 body {
   color: white;
+  background-color: rgb(12, 202, 255) !important;
 }
 
 .search-bar-container {
@@ -51,6 +52,20 @@ body {
 
 .App-link {
   color: #61dafb;
+}
+
+.weekly-weather-container {
+  background-color: rgba(102, 222, 255, 0.7);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  height: 400px;
+  width: 90vw;
+}
+
+.my-class {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes App-logo-spin {

@@ -6,6 +6,7 @@ import "../styles/currentWeather.css"
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { Data, lineChartData } from "../types/TodaysData"
 import { useEffect, useState } from "react"
+import WeeklyForecast from "./WeeklyForecast"
 
 interface Props {
     WeatherList: Data[]
@@ -20,7 +21,7 @@ const CurrentWeather = ({ WeatherList }: Props) => {
     const datauseable = () => {
         let data: lineChartData[] = []
         WeatherList.forEach((time) => 
-            data.push({name: time.dt_txt.slice(10, 16),temp: time.main.temp})
+            data.push({name: time.dt_txt.slice(10, 16),temp: time.main.temp, icon: time.weather[0].icon})
         )
         setLineChartList(data)
     }
@@ -45,6 +46,7 @@ const CurrentWeather = ({ WeatherList }: Props) => {
                 <h1 className="p-2 text-capitalize">
                     {search}
                 </h1>
+                </Row >
 
                 <Row className="light-bg mx-0 p-3 current-weather-container ">
                     <Col lg={6}>
@@ -93,18 +95,22 @@ const CurrentWeather = ({ WeatherList }: Props) => {
                     </Col >
                     
                 </Row >
-                    <Col xs={12} lg={6} className="temp-graph-container" >
+                <Row >
+                    <Col xs={12} lg={6} >
+                        <div  className="temp-graph-container mb-3">
                         <ResponsiveContainer width="100%" height={400}>
                             <LineChart data={lineChartList} margin={{ top: 5, right: 30, left: 20, bottom: 5 }} >
                                 <XAxis dataKey="name" />
                                 <YAxis hide />
                                 <Tooltip />
-                                <Legend type="circle"/>
-                                <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+                                {/* <Legend type="circle"/> */}
+                                <Line type="monotone" dataKey="temp" stroke="#000000" strokeWidth={1.5} />
                             </LineChart>
                         </ResponsiveContainer>
+                        </div>
                     </Col>
-            </Row >
+                    <WeeklyForecast/>
+                    </Row>
             </Container>
         )
     }
