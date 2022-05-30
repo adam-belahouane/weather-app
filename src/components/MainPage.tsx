@@ -3,6 +3,7 @@ import { Container, InputGroup, FormControl, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch, DefaultRootState, RootStateOrAny } from "react-redux";
 import { getWeatherAction, setSearchAction } from "../actions";
 import { ReduxStore } from "../types/ReduxStore";
+import { Data } from "../types/TodaysData";
 import CurrentWeather from "./CurrentWeather";
 import DayForecast from "./DayForecast";
 import WeeklyForecast from "./WeeklyForecast";
@@ -11,12 +12,32 @@ const MainPage = () => {
   const weather = useSelector((state: RootStateOrAny) => state.weatherApi);
   const dispatch = useDispatch();
   const [locationValue, setLocationValue] = useState('')
+  const [todaysWeather, setTodaysWeather] = useState<Data[] | []>([])
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const ApiUrl = process.env.REACT_APP_API_URL
 
+  const getTodaysWeather = async () => {
+    try {
+      const response = await fetch(`${ApiUrl}/forecast?q=${locationValue.length > 2 ? locationValue : "london"}&units=metric&cnt=5&appid=${apiKey}`)
+      if(response.ok) {
+        let data = await response.json()
+        setTodaysWeather(data.list)
+        
+      }
+    } catch (error) {
+    }
+  }
+  
   useEffect(() => {
     dispatch(getWeatherAction(locationValue));
     console.log(weather);
-
+    getTodaysWeather()
+    console.log(todaysWeather);
   }, [weather.search]);
+  useEffect(() => {
+    dispatch(getWeatherAction(weather.search))
+    
+  }, [])
   return (
     <Container>
       <Row>
@@ -42,7 +63,7 @@ const MainPage = () => {
         </Col>
       </Row>
       {/* <DayForecast day={weather.content}/> */}
-      <CurrentWeather currentWeather={weather.content} />
+      <CurrentWeather WeatherList={todaysWeather}/>
       {/* <WeeklyForecast/> */}
     </Container>
   );
