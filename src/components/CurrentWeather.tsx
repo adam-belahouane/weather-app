@@ -1,4 +1,6 @@
+
 import { Col, Container, Row } from "react-bootstrap"
+
 import { useSelector, RootStateOrAny } from "react-redux"
 import { ReduxStore } from "../types/ReduxStore"
 import { format } from "date-fns"
@@ -12,11 +14,13 @@ interface Props {
     WeatherList: Data[]
 }
 
+
 const CurrentWeather = ({ WeatherList }: Props) => {
     const search = useSelector((state: ReduxStore) => state.weatherApi.search)
     const currentWeather = useSelector((state: RootStateOrAny) => state.weatherApi.content);
 
     const [lineChartList, setLineChartList] = useState<lineChartData[] | []>([])
+
 
     const datauseable = () => {
         let data: lineChartData[] = []
@@ -91,6 +95,7 @@ const CurrentWeather = ({ WeatherList }: Props) => {
                                 <span>Pressure: </span>
                                 <span className="ms-1"> {currentWeather.main.pressure}</span>
                             </div>
+
                         </div>
                     </Col >
                     
@@ -113,6 +118,7 @@ const CurrentWeather = ({ WeatherList }: Props) => {
                     </Row>
             </Container>
         )
+
     }
 }
 

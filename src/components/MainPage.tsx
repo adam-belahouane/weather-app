@@ -16,6 +16,7 @@ const MainPage = () => {
   const apiKey = process.env.REACT_APP_API_KEY;
   const ApiUrl = process.env.REACT_APP_API_URL
 
+
   const getTodaysWeather = async () => {
     try {
       const response = await fetch(`${ApiUrl}/forecast?q=${locationValue.length > 2 ? locationValue : "london"}&units=metric&cnt=5&appid=${apiKey}`)
@@ -27,16 +28,19 @@ const MainPage = () => {
     } catch (error) {
     }
   }
+
   
   useEffect(() => {
     dispatch(getWeatherAction(locationValue));
     console.log(weather);
+
     getTodaysWeather()
     console.log(todaysWeather);
   }, [weather.search]);
   useEffect(() => {
     dispatch(getWeatherAction(weather.search))
     
+
   }, [])
   return (
     <Container>
@@ -63,7 +67,9 @@ const MainPage = () => {
         </Col>
       </Row>
       {/* <DayForecast day={weather.content}/> */}
+
       <CurrentWeather WeatherList={todaysWeather}/>
+
     </Container>
   );
 };
