@@ -9,8 +9,8 @@
 }
 
 body {
-  background-color: #101039 !important;
   color: white;
+  background-color: rgb(12, 202, 255) !important;
 }
 
 .search-bar-container {
@@ -21,7 +21,6 @@ body {
   position: absolute;
   left: 17px;
   top: 29px;
-  color: rgb(255, 255, 255);
 }
 
 .search-bar {
@@ -30,9 +29,8 @@ body {
   text-overflow: ellipsis;
   width: 100%;
   padding: 6px 48px;
-  color: white;
   border: none;
-  background-color: #1a1c49;
+  background-color: rgba(102, 222, 255, 0.7);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -54,6 +52,20 @@ body {
 
 .App-link {
   color: #61dafb;
+}
+
+.weekly-weather-container {
+  background-color: rgba(102, 222, 255, 0.7);
+  border-radius: 20px;
+  margin-bottom: 20px;
+  height: 400px;
+  width: 90vw;
+}
+
+.my-class {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @keyframes App-logo-spin {

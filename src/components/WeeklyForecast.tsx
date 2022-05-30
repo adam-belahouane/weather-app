@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { RootStateOrAny, useSelector } from "react-redux";
+import { Col, Row } from "react-bootstrap";
+import { DailyForecast } from "../types/TodaysData";
+import DayForecast from "./DayForecast";
 
 const WeeklyForecast = () => {
-  const [weekly, setWeekly] = useState(null);
+  const [weekly, setWeekly] = useState<DailyForecast[] | []>([]);
 
   const data = useSelector((state: RootStateOrAny) => state.weatherApi.content);
 
@@ -17,7 +20,7 @@ const WeeklyForecast = () => {
       );
       if (response.ok) {
         const data = await response.json();
-        setWeekly(data);
+        setWeekly(data.daily);
       } else {
         console.log("no data");
       }
@@ -28,8 +31,20 @@ const WeeklyForecast = () => {
 
   useEffect(() => {
       getWeeklyWeather()
+      console.log(weekly);
+      
   }, [data])
-  return <></>;
+  return (
+    <Col className="my-class" lg={6} >
+      <Row className="weekly-weather-container">
+      
+        {weekly.length > 0 ?
+        weekly.slice(1, 5).map((day, index) => <DayForecast day={day} key={index} /> ):
+        <></>}
+      
+      </Row>
+    </Col>
+  );
 };
 
 export default WeeklyForecast;
