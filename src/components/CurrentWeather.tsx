@@ -1,9 +1,9 @@
-import { Col, Row } from "react-bootstrap"
+import { Col, Container, Row } from "react-bootstrap"
 import { useSelector, RootStateOrAny } from "react-redux"
 import { ReduxStore } from "../types/ReduxStore"
 import { format } from "date-fns"
 import "../styles/currentWeather.css"
-import { LineChart, Line } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { Data, lineChartData } from "../types/TodaysData"
 import { useEffect, useState } from "react"
 
@@ -20,7 +20,7 @@ const CurrentWeather = ({ WeatherList }: Props) => {
     const datauseable = () => {
         let data: lineChartData[] = []
         WeatherList.forEach((time) => 
-            data.push({name: time.dt_txt,temp: time.main.temp})
+            data.push({name: time.dt_txt.slice(10, 16),temp: time.main.temp})
         )
         setLineChartList(data)
     }
@@ -40,8 +40,9 @@ const CurrentWeather = ({ WeatherList }: Props) => {
 
     } else {
         return (
-            <Col xs={12} className="my-3 slide-in-left">
-                <h1 className="p-2 text-capitalize white-text">
+            <Container>
+            <Row xs={12} className="my-3 slide-in-left">
+                <h1 className="p-2 text-capitalize">
                     {search}
                 </h1>
 
@@ -90,16 +91,21 @@ const CurrentWeather = ({ WeatherList }: Props) => {
                             </div>
                         </div>
                     </Col >
-
+                    
                 </Row >
-                <Row>
-                    <Col className="temp-graph-container">
-                        <LineChart width={400} height={400} data={lineChartList} >
-                            <Line type="monotone" dataKey="temp" stroke="#8884d8" />
-                        </LineChart>
+                    <Col xs={12} lg={6} className="temp-graph-container" >
+                        <ResponsiveContainer width="100%" height={400}>
+                            <LineChart data={lineChartList} margin={{ top: 5, right: 30, left: 20, bottom: 5 }} >
+                                <XAxis dataKey="name" />
+                                <YAxis hide />
+                                <Tooltip />
+                                <Legend type="circle"/>
+                                <Line type="monotone" dataKey="temp" stroke="#8884d8" />
+                            </LineChart>
+                        </ResponsiveContainer>
                     </Col>
-                </Row>
-            </Col >
+            </Row >
+            </Container>
         )
     }
 }
