@@ -22,7 +22,7 @@ const Humidity = () => {
                         <span className="wind-text">Humidity</span>
                         <ResponsiveContainer height="70%" width="100%">
                             <PieChart>
-                                <Pie data={pieChartData} dataKey="value" fill="#000000" stroke="none" innerRadius={60} outerRadius={70} startAngle={450} endAngle={90} >
+                                <Pie data={pieChartData} dataKey="value" fill="#000000" stroke="none" innerRadius={50} outerRadius={60} startAngle={450} endAngle={90} >
                                     <Cell key={`cell-0`} fill="#000000" />
                                     <Cell key={`cell-1`} fill="#66deffb3" />
                                 </Pie>
