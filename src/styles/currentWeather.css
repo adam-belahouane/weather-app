@@ -5,13 +5,25 @@
 }
 
 .temp-graph-container {
-  background-color: rgba(102, 222, 255, 0.7);
+  background-color: #66deffb3;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white;
   border-radius: 20px;
   width: 100%;
+}
+
+.high-to-low-container {
+  position: relative;
+}
+
+.high-to-low {
+  position: absolute;
+  top: 38%;
+  z-index: 10;
+  font-weight: 500;
+  font-size: 20px;
 }
 
 .today-text {
