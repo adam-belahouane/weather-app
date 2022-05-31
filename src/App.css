@@ -103,3 +103,9 @@ body {
     opacity: 1;
   }
 }
+
+@media only screen and (max-width: 576px) {
+  .weekly-weather-container {
+    height: fit-content;
+  }
+}

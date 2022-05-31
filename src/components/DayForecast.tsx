@@ -13,7 +13,7 @@ const DayForecast = ({day} : {day : DailyForecast}) => {
 
     return (
         
-        <Col xs={6}>
+        <Col xs={12} md={6}>
             {/* <div className="d-flex flex-column light-bg p-3 p-md-2 "> */}
                 <div className="d-flex align-items-center justify-content-between px-2 slide-in-left" >
                     <div className="d-flex flex-column">
