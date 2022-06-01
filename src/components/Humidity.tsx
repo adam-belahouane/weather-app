@@ -23,8 +23,8 @@ const Humidity = () => {
                         <ResponsiveContainer height="70%" width="100%">
                             <PieChart>
                                 <Pie data={pieChartData} dataKey="value" fill="#000000" stroke="none" innerRadius={50} outerRadius={60} startAngle={450} endAngle={90} >
-                                    <Cell key={`cell-0`} fill="#000000" />
-                                    <Cell key={`cell-1`} fill="#66deffb3" />
+                                    <Cell key={`cell-0`} fill="#FA8E74" />
+                                    <Cell key={`cell-1`} fill="#F9F7F9" />
                                 </Pie>
                             </PieChart>
                         </ResponsiveContainer>
