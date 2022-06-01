@@ -1,17 +1,18 @@
 .current-weather-container {
-  background-color: rgba(102, 222, 255, 0.7);
-  border-radius: 20px;
+  /* background-color: rgba(102, 222, 255, 0.7); */
   margin-bottom: 20px;
+  box-shadow: 4px 5px 16px 5px rgba(0,0,0,0.16);
+  border-radius: 20px;
 }
 
 .temp-graph-container {
-  background-color: #66deffb3;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  border-radius: 20px;
+  color: #FA8E74;
   width: 100%;
+  border-radius: 20px;
+  box-shadow: 4px 5px 16px 5px rgba(0,0,0,0.16);
 }
 
 .high-to-low-container {
@@ -28,11 +29,13 @@
 
 .today-text {
   font-size: 25px;
+  color: #525E7D;
 }
 
 .temp-text-big {
   font-size: 65px;
   font-weight: 800;
+  color: #525E7D;
 }
 
 

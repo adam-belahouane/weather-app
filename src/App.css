@@ -1,15 +1,13 @@
-.App {
-  text-align: center;
-  
+.small-temp-color {
+  color: #FA8E74;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.text-color {
+  color: #525E7D !important;
 }
 
 body {
-  background-color: rgb(12, 202, 255) !important;
+  background-color: white !important;
 }
 
 .search-bar-container {
@@ -20,6 +18,7 @@ body {
   position: absolute;
   left: 17px;
   top: 29px;
+  color: #FA8E74;
 }
 
 .search-bar {
@@ -29,7 +28,12 @@ body {
   width: 100%;
   padding: 6px 48px;
   border: none;
-  background-color: rgba(102, 222, 255, 0.7);
+  box-shadow: 4px 5px 16px 5px rgba(0,0,0,0.16);
+}
+
+.search-bar:focus {
+  box-shadow: 4px 5px 16px 5px rgba(0,0,0,0.25);
+  border: none;
 }
 
 .day-of-week {
@@ -37,29 +41,8 @@ body {
   font-weight: 500;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
 .weekly-weather-container {
-  background-color: rgba(102, 222, 255, 0.7);
+  box-shadow: 4px 5px 16px 5px rgba(0,0,0,0.16);
   border-radius: 20px;
   margin-bottom: 20px;
   width: 100%;

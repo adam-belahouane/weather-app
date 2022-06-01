@@ -19,7 +19,7 @@ const DayForecast = ({day} : {day : DailyForecast}) => {
                     <div className="d-flex flex-column">
                             {date && <p className="m-0 day-of-week">{format(date, "EEEE")}</p>}
                         <div className="d-flex temp-text ">
-                            <span >{Math.round(day.temp.day)}</span> <span className="ps-1 yellow-text">°C</span>
+                            <span className="small-temp-color">{Math.round(day.temp.day)}</span> <span className="ps-1 small-temp-color">°C</span>
                         </div>
                         <span className="time-text" >{day.weather[0]?.description[0].toUpperCase() + day.weather[0]?.description.substring(1)}</span>
                     </div> 

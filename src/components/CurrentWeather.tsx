@@ -5,7 +5,7 @@ import { useSelector, RootStateOrAny } from "react-redux"
 import { ReduxStore } from "../types/ReduxStore"
 import { format } from "date-fns"
 import "../styles/currentWeather.css"
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, PieChart, Pie, Cell } from 'recharts'
+import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts'
 import { Data, lineChartData } from "../types/TodaysData"
 import { useEffect, useState } from "react"
 import WeeklyForecast from "./WeeklyForecast"
@@ -45,7 +45,7 @@ const CurrentWeather = ({ WeatherList }: Props) => {
         return (
             <>
                 <Row xs={12} className="my-3">
-                    <h1 className="p-2 text-capitalize">
+                    <h1 className="p-2 text-capitalize d-flex align-items-center justify-content-center">
                         {search}
                     </h1>
                 </Row >
@@ -83,20 +83,24 @@ const CurrentWeather = ({ WeatherList }: Props) => {
                         </div>
                     </Col>
 
-                    <Humidity/>
+                    <Humidity />
 
                 </Row >
                 <Row className="slide-in-left" >
                     <Col className="mb-3" xs={12} lg={6} >
                         <div className="temp-graph-container">
                             <ResponsiveContainer width="95%" height={400}>
-                                <LineChart data={lineChartList} >
+                                <AreaChart data={lineChartList} >
+                                    <defs>
+                                        <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+                                            <stop offset="5%" stopColor="#FA8E74" stopOpacity={0.7} />
+                                            <stop offset="80%" stopColor="#FA8E74" stopOpacity={0} />
+                                        </linearGradient>
+                                    </defs>
                                     <XAxis dataKey="name" />
-                                    <YAxis hide />
+                                    <Area type="monotone" dot={true} dataKey="temp" stroke="#FA8E74" fillOpacity={1} strokeWidth={3} fill="url(#colorUv)" />
                                     <Tooltip />
-                                    {/* <Legend type="circle"/> */}
-                                    <Line type="monotone" dataKey="temp" stroke="#000000" strokeWidth={1.5} />
-                                </LineChart>
+                                </AreaChart>
                             </ResponsiveContainer>
                         </div>
                     </Col>
@@ -113,3 +117,13 @@ const CurrentWeather = ({ WeatherList }: Props) => {
 }
 
 export default CurrentWeather
+
+
+
+// <LineChart data={lineChartList} >
+//                                     <XAxis dataKey="name" />
+//                                     <YAxis hide />
+//                                     <Tooltip />
+//                                     {/* <Legend type="circle"/> */}
+//                                     <Line type="monotone" dataKey="temp" stroke="#FA8E74" strokeWidth={1.5} />
+//                                 </LineChart>
